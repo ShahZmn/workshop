@@ -1,0 +1,1049 @@
+/* ==========================================================================
+   MARVEL UNIVERSE: A JOURNEY THROUGH TIME
+   Visual Direction: Cinematic Cosmic Archive & Space Elevator
+   Strict Standard: Pure HTML5 + CSS3 (No JavaScript, No Frameworks)
+   Design System: Anti-AI-Slop Certified (Asymmetric, Content-Driven, Restrained)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Core Void & Obsidian Tones with Marvel Crimson Nuance */
+  --bg-deep-space: #100305;
+  --bg-obsidian: #160508;
+  --bg-archive-surface: rgba(28, 8, 12, 0.85);
+  --bg-archive-elevated: rgba(38, 11, 17, 0.9);
+  --bg-archive-highlight: rgba(52, 16, 24, 0.95);
+
+  /* Restrained Iron Man Accent Palette */
+  --gold-primary: #d4af37;
+  --gold-bright: #f3cf65;
+  --gold-muted: rgba(212, 175, 55, 0.38);
+  --gold-faint: rgba(212, 175, 55, 0.08);
+
+  --crimson-core: #b91c1c;
+  --crimson-bright: #dc2626;
+  --crimson-muted: rgba(185, 28, 28, 0.4);
+  --crimson-faint: rgba(185, 28, 28, 0.1);
+
+  /* Stark Arc Reactor Cyan Accent */
+  --arc-cyan: #38bdf8;
+  --arc-cyan-glow: rgba(56, 189, 248, 0.45);
+  --arc-cyan-faint: rgba(56, 189, 248, 0.08);
+
+  /* Archival Telemetry & Typography Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-telemetry: #a1a1aa;
+  --border-archival: rgba(212, 175, 55, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  /* Canon Badge Palette */
+  --tag-canon-bg: rgba(212, 175, 55, 0.15);
+  --tag-canon-text: #f3cf65;
+  --tag-canon-border: rgba(212, 175, 55, 0.45);
+
+  --tag-alt-bg: rgba(220, 38, 38, 0.15);
+  --tag-alt-text: #fca5a5;
+  --tag-alt-border: rgba(220, 38, 38, 0.4);
+
+  --tag-incursion-bg: rgba(220, 38, 38, 0.18);
+  --tag-incursion-text: #f87171;
+  --tag-incursion-border: rgba(220, 38, 38, 0.45);
+
+  --tag-cosmic-bg: rgba(168, 85, 247, 0.15);
+  --tag-cosmic-text: #d8b4fe;
+  --tag-cosmic-border: rgba(168, 85, 247, 0.4);
+
+  --tag-shield-bg: rgba(185, 28, 28, 0.2);
+  --tag-shield-text: #fecaca;
+  --tag-shield-border: rgba(239, 68, 68, 0.4);
+
+  /* Typography Stacks */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Elevator Cable Dimension */
+  --cable-width: 2px;
+  --cable-glow-width: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Typography
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: #120406;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #120406;
+  background-image: 
+    linear-gradient(180deg, rgba(14, 3, 5, 0.52) 0%, rgba(20, 4, 7, 0.62) 40%, rgba(14, 3, 5, 0.76) 100%),
+    url('images/marvel_bg.png');
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f8fafc;
+}
+
+/* Background layers disabled for clean, human, non-AI-slop look */
+.cosmic-stars-layer {
+  display: none;
+}
+
+.elevator-shaft-grid {
+  display: none;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Top Telemetry Bar (Persistent Space-Elevator HUD)
+   -------------------------------------------------------------------------- */
+.hud-telemetry-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 2rem;
+  background: rgba(18, 4, 7, 0.92);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hud-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+}
+
+.hud-callsign {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.hud-center {
+  color: var(--text-telemetry);
+  display: flex;
+  gap: 2rem;
+}
+
+.hud-center span strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hud-jump-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.hud-jump-link:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-bright);
+  background: var(--gold-faint);
+}
+
+/* --------------------------------------------------------------------------
+   4. Opening Screen / Hero Section
+   -------------------------------------------------------------------------- */
+.hero-cosmic-viewport {
+  position: relative;
+  z-index: 2;
+  min-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.elevator-conduit-cap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, var(--gold-primary), transparent);
+}
+
+.hero-archive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 1.4rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f3cf65;
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  background: rgba(28, 7, 12, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 4px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.badge-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+}
+
+.hero-monumental-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.08;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  max-width: 1200px;
+  text-shadow: none;
+}
+
+.hero-monumental-title span {
+  display: block;
+  color: #d4af37;
+  font-size: 0.82em;
+  letter-spacing: 0.18em;
+  margin-top: 0.45rem;
+}
+
+.hero-archival-subheading {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+.hero-dispatch-narrative {
+  max-width: 760px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+.hero-telemetry-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 1.5rem;
+  max-width: 680px;
+  width: 100%;
+  margin-bottom: 3.5rem;
+}
+
+.telemetry-cell {
+  padding: 1rem 0.85rem;
+  background: rgba(28, 8, 12, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.telemetry-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--gold-bright);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.telemetry-value {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Clear Scroll Prompt */
+.hero-elevator-descent-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.hero-elevator-descent-prompt:hover {
+  color: var(--gold-bright);
+}
+
+.prompt-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.prompt-conduit-vector {
+  width: 1px;
+  height: 48px;
+  background: rgba(212, 175, 55, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.prompt-conduit-vector::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: #ffffff;
+  animation: descent-light 2s linear infinite;
+}
+
+@keyframes descent-light {
+  0% { transform: translateY(-16px); }
+  100% { transform: translateY(48px); }
+}
+
+/* --------------------------------------------------------------------------
+   5. Space Elevator Architecture & Central Spine
+   -------------------------------------------------------------------------- */
+.timeline-voyage-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 8rem;
+}
+
+/* Central Space Elevator Conduit (The Spine) */
+.timeline-voyage-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 119, 6, 0.5) 0%,
+    rgba(217, 119, 6, 0.15) 50%,
+    rgba(217, 119, 6, 0.5) 100%
+  );
+  box-shadow: none;
+  z-index: 1;
+}
+
+/* Secondary Elevator Transit Rails - Hidden for clean editorial look */
+.timeline-voyage-container::after {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. Sticky Reactor Spindle (Hidden for clean minimal design)
+   -------------------------------------------------------------------------- */
+.sticky-reactor-anchor {
+  display: none;
+}
+
+.arc-reactor-core {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #08111c 0%, #03060a 80%);
+  border: 2px solid var(--gold-primary);
+  box-shadow: 
+    0 0 20px rgba(197, 160, 89, 0.5),
+    0 0 40px rgba(56, 189, 248, 0.3),
+    inset 0 0 14px rgba(56, 189, 248, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+/* Concentric Titanium Outer Ring */
+.arc-reactor-core::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px dashed rgba(226, 186, 109, 0.65);
+  animation: reactor-rotate 24s linear infinite;
+}
+
+/* Concentric Inner Core & Induction Coils */
+.arc-reactor-core::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, var(--arc-cyan) 45%, #0369a1 90%);
+  box-shadow: 
+    0 0 12px var(--arc-cyan),
+    0 0 24px rgba(56, 189, 248, 0.8);
+  animation: reactor-pulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes reactor-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reactor-pulse {
+  0% {
+    transform: scale(0.92);
+    box-shadow: 0 0 8px var(--arc-cyan), 0 0 16px rgba(56, 189, 248, 0.6);
+  }
+  100% {
+    transform: scale(1.08);
+    box-shadow: 0 0 16px var(--arc-cyan), 0 0 32px rgba(56, 189, 248, 0.95);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Monumental Part & Phase Chapter Dividers
+   -------------------------------------------------------------------------- */
+.part-monument-banner {
+  position: relative;
+  z-index: 5;
+  margin: 6rem auto 3rem;
+  padding: 3rem 2rem;
+  max-width: 960px;
+  background: rgba(26, 7, 12, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55);
+}
+
+.part-classification {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #f3cf65;
+  margin-bottom: 0.6rem;
+}
+
+.part-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.part-span-dates {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: #cbd5e1;
+}
+
+/* Phase Header */
+.phase-chapter-header {
+  position: relative;
+  z-index: 5;
+  margin: 3.5rem auto 2rem;
+  padding: 1.15rem 2rem;
+  max-width: 680px;
+  background: rgba(24, 6, 10, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 6px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+.phase-number-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.phase-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   8. Timeline Nodes (Alternating Left & Right Layout)
+   -------------------------------------------------------------------------- */
+.timeline-chronicle {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-event-entry {
+  position: relative;
+  display: flex;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Left-Side Events */
+.timeline-event-entry.align-left {
+  align-self: flex-start;
+  padding-right: 3.5rem;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+/* Right-Side Events */
+.timeline-event-entry.align-right {
+  align-self: flex-end;
+  padding-left: 3.5rem;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* Horizontal Connector Conduit from Node to Central Line */
+.timeline-event-entry::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  width: 3.5rem;
+  height: 1px;
+  background: var(--gold-primary);
+  opacity: 0.7;
+}
+
+.timeline-event-entry.align-left::before {
+  right: 0;
+}
+
+.timeline-event-entry.align-right::before {
+  left: 0;
+}
+
+/* Node Anchor Dot on the Central Spine */
+.timeline-event-entry::after {
+  content: '';
+  position: absolute;
+  top: calc(2rem - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0a0c10;
+  border: 2px solid var(--gold-primary);
+  z-index: 2;
+}
+
+.timeline-event-entry.align-left::after {
+  right: -4px;
+}
+
+.timeline-event-entry.align-right::after {
+  left: -4px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Clean Event Cards (Anti-AI-Slop Editorial Design)
+   -------------------------------------------------------------------------- */
+.event-card {
+  position: relative;
+  background: rgba(22, 6, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 580px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Top Archival Header Inside Event Card */
+.card-archival-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+}
+
+.event-temporal-mark {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold-bright);
+}
+
+.event-archive-index {
+  display: none !important;
+}
+
+/* Canon & Era Classification Badges */
+.canon-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.85rem;
+}
+
+.canon-badge.badge-canon {
+  background: var(--tag-canon-bg);
+  color: var(--tag-canon-text);
+  border: 1px solid var(--tag-canon-border);
+}
+
+.canon-badge.badge-alternate {
+  background: var(--tag-alt-bg);
+  color: var(--tag-alt-text);
+  border: 1px solid var(--tag-alt-border);
+}
+
+.canon-badge.badge-incursion {
+  background: var(--tag-incursion-bg);
+  color: var(--tag-incursion-text);
+  border: 1px solid var(--tag-incursion-border);
+}
+
+.canon-badge.badge-cosmic {
+  background: var(--tag-cosmic-bg);
+  color: var(--tag-cosmic-text);
+  border: 1px solid var(--tag-cosmic-border);
+}
+
+.canon-badge.badge-shield {
+  background: var(--tag-shield-bg);
+  color: var(--tag-shield-text);
+  border: 1px solid var(--tag-shield-border);
+}
+
+/* Event Title & Narrative Description */
+.event-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.event-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Telemetry Metadata Tag Strip (Hidden per user request: clean minimalist presentation) */
+.event-meta-strip {
+  display: none !important;
+}
+
+.event-meta-strip span strong {
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   10. Editorial Variations (Not all cards identical!)
+   -------------------------------------------------------------------------- */
+
+/* Clean Editorial Event Cards */
+.event-card.card-landmark {
+  background: rgba(26, 7, 12, 0.88);
+  border-color: rgba(212, 175, 55, 0.32);
+}
+
+.event-card.card-landmark .event-title {
+  font-size: 1.35rem;
+  color: #ffffff;
+}
+
+.event-card.card-dossier {
+  background: rgba(22, 6, 10, 0.85);
+}
+
+.event-card.card-dossier::before {
+  display: none;
+}
+
+.event-card.card-incursion {
+  background: rgba(28, 6, 10, 0.88);
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+.event-card.card-incursion .event-temporal-mark {
+  color: var(--gold-bright);
+}
+
+.event-card.card-compact {
+  padding: 1.25rem 1.5rem;
+}
+
+.event-card.card-compact .event-title {
+  font-size: 1.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. Imagery & Media Frames (High-fidelity Display)
+   -------------------------------------------------------------------------- */
+.event-media-container {
+  position: relative;
+  margin: 1.25rem 0 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  background: #06080d;
+}
+
+.event-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image {
+  transform: scale(1.02);
+}
+
+.event-media-container::before,
+.event-media-container::after {
+  display: none;
+}
+
+.event-media-caption {
+  display: none !important;
+}
+
+.caption-tag {
+  display: none !important;
+}
+
+/* Archival Placeholder Frame (Clean, Honest, Content-Driven) */
+.media-awaiting-frame {
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px dashed rgba(197, 160, 89, 0.25);
+  background: rgba(6, 10, 16, 0.6);
+  margin: 1rem 0;
+}
+
+.awaiting-icon {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold-primary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.awaiting-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. Archival Mission Wrap & Terminal Colophon (Footer)
+   -------------------------------------------------------------------------- */
+.archive-colophon-footer {
+  display: none !important;
+}
+
+.colophon-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.colophon-mission-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.colophon-mission-text {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+.colophon-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.colophon-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.colophon-nav-list a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.colophon-nav-list a:hover {
+  color: var(--arc-cyan);
+}
+
+.colophon-bottom-strip {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-telemetry);
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Architecture (Tablets & Mobile Viewports)
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hud-center {
+    display: none;
+  }
+
+  .colophon-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  /* Collapse Central Space Elevator to the Left Margin */
+  .timeline-voyage-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .timeline-voyage-container::before {
+    left: 24px;
+    transform: none;
+  }
+
+  .timeline-voyage-container::after {
+    left: 24px;
+    transform: none;
+  }
+
+  .sticky-reactor-anchor {
+    justify-content: flex-start;
+    padding-left: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .arc-reactor-core {
+    margin-left: -8px;
+  }
+
+  .timeline-event-entry {
+    width: 100%;
+    align-self: flex-start !important;
+    padding-left: 48px !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-event-entry::before {
+    left: 24px !important;
+    width: 24px !important;
+    right: auto !important;
+  }
+
+  .timeline-event-entry::after {
+    left: 19px !important;
+    right: auto !important;
+  }
+
+  .event-card {
+    max-width: 100%;
+  }
+
+  .hero-telemetry-cluster {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .hud-telemetry-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-cosmic-viewport {
+    padding-top: 3rem;
+  }
+
+  .hero-monumental-title {
+    font-size: 2.4rem;
+    letter-spacing: 0.12em;
+  }
+
+  .part-monument-banner {
+    padding: 2rem 1.25rem;
+  }
+
+  .part-heading {
+    font-size: 1.6rem;
+  }
+
+  .event-card {
+    padding: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Hand-Drawn & Sketched Archival Assets (Editorial Tactile Detailing)
+   -------------------------------------------------------------------------- */
+/* Clean minimalist styling (Anti-AI-Slop Clean Style) */
+.sketch-bracket {
+  display: none !important;
+}
+
+.sketch-underline {
+  display: none !important;
+}
+
+.sketch-tape {
+  display: none !important;
+}
+
+.hand-drawn-stamp {
+  display: none !important;
+}
+
+.hand-drawn-stamp .stamp-border {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   15. Motion Accessibility (Respect prefers-reduced-motion)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
